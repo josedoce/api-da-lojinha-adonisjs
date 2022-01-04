@@ -11,6 +11,8 @@ export default class Users extends BaseSchema {
       table.string('email').notNullable();
       table.string('password').notNullable();
       table.boolean('is_client').defaultTo(false);
+      table.boolean('is_seller').defaultTo(false);
+      table.boolean('is_admin').defaultTo(false);
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
     })

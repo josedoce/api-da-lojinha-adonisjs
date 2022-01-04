@@ -17,6 +17,15 @@ export default class User extends BaseModel {
   @column()
   public password: string
 
+  @column()
+  public is_client: boolean;
+
+  @column()
+  public is_seller: boolean;
+
+  @column()
+  public is_admin: boolean;
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
