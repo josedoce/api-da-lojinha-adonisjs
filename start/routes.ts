@@ -23,9 +23,10 @@ import WebSocket from 'App/Services/WebSocket';
 
 Route.get('/', async () => {
 
-  WebSocket.io.emit('new:user', {username: 'joseildo'});
+  // WebSocket.io.emit('new:user', {username: 'joseildo'});
   return { api: 'v1' };
-});
+}).middleware('bearer_auth');
 
 Route.post('/signup', 'UserController.store');
 Route.post('/signin', 'UserController.show');
+Route.delete('/signout', 'UserController.delete').middleware('bearer_auth');

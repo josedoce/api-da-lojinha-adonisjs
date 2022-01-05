@@ -17,24 +17,24 @@ export default class UserSeeder extends BaseSeeder {
       {
         name: 'usuario',
         email: 'usuario@gmail.com',
-        password: '$bcrypt$v=98$r=10$wJ8+Zp/mcdmW65TOjxb8Ug$edMnltsONxWXR4tm3RNCyL7SQFMtCXs',
+        password: '$bcrypt$v=98$r=10$VGZOOEk7ZkPuNAY4QEvcVg$NBI4gTG8QA7OZL+zn1VXFO5c92fCIZQ',
       },
       {
         name: 'cliente',
         email: 'cliente@gmail.com',
-        password: '$bcrypt$v=98$r=10$wJ8+Zp/mcdmW65TOjxb8Ug$edMnltsONxWXR4tm3RNCyL7SQFMtCXs',
+        password: '$bcrypt$v=98$r=10$VGZOOEk7ZkPuNAY4QEvcVg$NBI4gTG8QA7OZL+zn1VXFO5c92fCIZQ',
         is_client: true,
       },
       {
         name: 'vendedor',
         email: 'vendedor@gmail.com',
-        password: '$bcrypt$v=98$r=10$wJ8+Zp/mcdmW65TOjxb8Ug$edMnltsONxWXR4tm3RNCyL7SQFMtCXs',
+        password: '$bcrypt$v=98$r=10$VGZOOEk7ZkPuNAY4QEvcVg$NBI4gTG8QA7OZL+zn1VXFO5c92fCIZQ',
         is_seller: true,
       },
       {
         name: 'administrador',
         email: 'administrador@gmail.com',
-        password: '$bcrypt$v=98$r=10$wJ8+Zp/mcdmW65TOjxb8Ug$edMnltsONxWXR4tm3RNCyL7SQFMtCXs',
+        password: '$bcrypt$v=98$r=10$VGZOOEk7ZkPuNAY4QEvcVg$NBI4gTG8QA7OZL+zn1VXFO5c92fCIZQ',
         is_admin: true,
       },
     ];

@@ -20,6 +20,10 @@ class UserController {
     return await this.userService.signUp(ctx);
   }
 
+  public async delete(ctx: HttpContext){
+    //validações aqui.
+    return await this.userService.signOut(ctx);
+  }
 }
 
 export default UserController;

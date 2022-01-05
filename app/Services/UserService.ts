@@ -3,6 +3,7 @@ import Logger from '@ioc:Adonis/Core/Logger';
 import Hash from '@ioc:Adonis/Core/Hash';
 import { HttpContext } from "@adonisjs/core/build/standalone";
 import { generateToken, IPayload } from "App/Utils/jsonwebtoken";
+import { StatusCode } from "App/Enum/HttpCode";
 
 export default class UserService {
 
@@ -86,6 +87,28 @@ export default class UserService {
       success: true, 
       token: token, 
       message: 'user is authenticated',
+    });
+  }
+
+  public async signOut({request, response}: HttpContext){
+    const user = await User.query()
+    .select('*')
+    .where('email', request.userJwt.email).first();
+    if(user == null){
+      return response.status(StatusCode.NOT_FOUND).json({
+        success: true,
+        token: null,
+        message: 'user not found, logout isn\'t ok.',
+      });
+    }
+    user.is_logged = false;
+    user.save();
+    
+    return response.status(StatusCode.OK).json({
+      success: true,
+      token: null,
+      message: 'logout is ok.',
+      data: user
     });
   }
 

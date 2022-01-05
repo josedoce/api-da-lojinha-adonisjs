@@ -6,17 +6,18 @@ interface IPayload {
   is_admin?: boolean;
   is_client?: boolean;
   is_seller?: boolean;
+  is_logged?: boolean;
 }
 
 function generateToken(payload: IPayload, remember: boolean){
   const expiresIn = remember?(60*60*24*7):(60*60*24);
-
+  payload.is_logged = true;
   return sign(payload, SECRET_KEY, {expiresIn: expiresIn});
 }
 
-function decodeToken(token: string){
+function decodeToken(token: string): IPayload | null{
   try{
-    return verify(token, SECRET_KEY);
+    return verify(token, SECRET_KEY) as IPayload;
   }catch(e){
     return null;
   }

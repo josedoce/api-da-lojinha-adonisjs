@@ -13,6 +13,7 @@ export default class Users extends BaseSchema {
       table.boolean('is_client').defaultTo(false);
       table.boolean('is_seller').defaultTo(false);
       table.boolean('is_admin').defaultTo(false);
+      table.boolean('is_logged').defaultTo(false);
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
     })
