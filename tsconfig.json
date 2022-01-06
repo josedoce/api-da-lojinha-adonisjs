@@ -3,11 +3,13 @@
   "include": [
     "**/*"
   ],
+  
   "exclude": [
     "node_modules",
     "build"
   ],
   "compilerOptions": {
+    "strictNullChecks": false, //quero null !
     "outDir": "build",
     "rootDir": "./",
     "sourceMap": true,

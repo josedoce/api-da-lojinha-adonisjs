@@ -22,10 +22,9 @@ import Route from '@ioc:Adonis/Core/Route';
 import WebSocket from 'App/Services/WebSocket';
 
 Route.get('/', async () => {
-
-  // WebSocket.io.emit('new:user', {username: 'joseildo'});
-  return { api: 'v1' };
-}).middleware('bearer_auth');
+  
+  return { api: 'v1'};
+});
 
 Route.post('/signup', 'UserController.store');
 Route.post('/signin', 'UserController.show');
