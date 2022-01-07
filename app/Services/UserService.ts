@@ -47,10 +47,12 @@ export default class UserService {
         message: 'do not create token, try sign in again'
       });
     }
-    
+    user.is_logged = true;
+    user.save();
     user.uuid = userUuid.uuid;
     const payload = this.generatePayload(user);
     const token = generateToken(payload, body.remember);
+    
     return response.status(201).json({
       success: true, 
       token: token, 
@@ -79,7 +81,8 @@ export default class UserService {
         message: 'password is invalid'
       });
     }
-    
+    userExists.is_logged = true;
+    userExists.save();
     const payload = this.generatePayload(userExists);
     const token = generateToken(payload, body.remember);
 
