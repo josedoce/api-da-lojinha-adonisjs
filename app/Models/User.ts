@@ -6,6 +6,7 @@ import ClientProfile from './ClientProfile';
 import Favorite from './Favorite';
 import SellerProfile from './SellerProfile';
 import Cart from './Cart';
+import Shelve from './Shelve';
 export default class User extends BaseModel {
 
   @column({ isPrimary: true })
@@ -43,6 +44,9 @@ export default class User extends BaseModel {
   
   @hasMany(()=> Cart, {foreignKey: 'user_uuid'})
   public productsInCart: HasMany<typeof Cart>;
+
+  @hasMany(()=>Shelve, {foreignKey: 'user_uuid'})
+  public shelf: HasMany<typeof Shelve>;
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
