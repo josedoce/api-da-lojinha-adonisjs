@@ -12,16 +12,14 @@ class CartController {
     
   }
   public async index(ctx: HttpContext){
-    const {request, response, params} = ctx;
+    const {request, response } = ctx;
     const {page, limit} = request.qs();
     const USER_UUID = request.userJwt.uuid;
-    const user = await User.query()
-    .where('uuid',USER_UUID)
-    .preload('productsInCart', (query)=>{
-      query.offset(page).limit(limit);
-    }).first();
-
-    return response.status(StatusCode.OK).json({favorites: user.productsInFavorites, page: {page, limit}});
+    const cart = await Cart.query()
+    .where('user_uuid',USER_UUID)
+    .offset(page).limit(limit);
+    
+    return response.status(StatusCode.OK).json({cart, page: {page, limit}});
   }
 
   public async show(ctx:HttpContext){
@@ -67,6 +65,7 @@ class CartController {
         user_uuid: USER_UUID,
       });
     }else{
+      //calculo do preço tbm vai aqui...
       hasItemInCart.unity = body.unity;
       hasItemInCart.save();
       cart = hasItemInCart;
