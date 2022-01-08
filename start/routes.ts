@@ -54,12 +54,18 @@ Route.get('/', async () => {
   return { api: 'v1', favorites, sellerProducts, userCart};
 });
 
+//user
 Route.post('/signup', 'UserController.store');
 Route.post('/signin', 'UserController.show');
 Route.delete('/signout', 'UserController.delete').middleware('bearer_auth');
 
+//favorite
 Route.get('/client/favorite', 'FavoriteController.index').middleware('bearer_auth');
+Route.get('/client/favorite/:uuid', 'FavoriteController.show').middleware('bearer_auth');
+Route.post('/client/favorite', 'FavoriteController.store').middleware('bearer_auth');
+Route.delete('/client/favorite/:uuid', 'FavoriteController.delete').middleware('bearer_auth');
 
+//cart
 Route.get('/client/cart', 'CartController.index').middleware('bearer_auth');
 Route.get('/client/cart/:uuid', 'CartController.show').middleware('bearer_auth');
 Route.post('/client/cart', 'CartController.store').middleware('bearer_auth');
