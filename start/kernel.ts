@@ -41,5 +41,8 @@ Server.middleware.register([
 |
 */
 Server.middleware.registerNamed({
-  bearer_auth: ()=> import('App/Middleware/BearerAuthorization'),
+  bearer_auth: () => import('App/Middleware/BearerAuthorization'),
+  role_seller: () => import('App/Middleware/RoleSellerMiddleware'),
+  role_client: () => import('App/Middleware/RoleClientMiddleware'),
+  role_admin: () => import('App/Middleware/RoleAdminMiddleware')
 })
