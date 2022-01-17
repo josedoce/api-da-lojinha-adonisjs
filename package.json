@@ -1,6 +1,7 @@
 {
   "name": "api-da-lojinha-adonis",
   "version": "1.0.0",
+  "description": "Aplicação baseada em um sistema de e-commerce para fins de aprendizado.",
   "private": true,
   "scripts": {
     "dev": "node ace serve --watch",
