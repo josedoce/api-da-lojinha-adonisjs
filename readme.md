@@ -80,20 +80,21 @@
 
 ## Como rodar o aplicativo :play_or_pause_button:
 
-> `$ git clone https://github.com/josedoce/api-da-lojinha-lumen-`
-> `$ cd api-da-lojinha-lumen-`
+> `$ git clone https://github.com/josedoce/api-da-lojinha-adonisjs`
+> `$ cd api-da-lojinha-adonisjs`
 > `$ npm install ou yarn install`
-> `$ npm dev ou yarn dev`
-> Acesse  http://localhost:3333
+> `$ node ace server --watch`
+> Acesse  http://localhost:port
 
 ------
 
 ## Linguagens e libs utilizadas :books:
 - typescript
-- express
-- typeorm
-- helmet
-- yup
+- adonis
+
+## Adendos utilizadas :books:
+- UML
+    <img src="./uml.svg" alt="uma imagem contendo um uml">
 
 ------
 
