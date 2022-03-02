@@ -1,6 +1,7 @@
 import BaseSeeder from '@ioc:Adonis/Lucid/Seeder';
 import Hash from '@ioc:Adonis/Core/Hash';
 import User from 'App/Models/User';
+import { ProductsFactory } from 'Database/factories';
 
 interface IUser {
   name: string;
@@ -14,6 +15,7 @@ interface IUser {
 export default class UserSeeder extends BaseSeeder {
   public static developmentOnly = true
   public async run () {
+    console.log(await ProductsFactory.createMany(10));
     const defaultPassword = '12345678';
     const users: IUser[] = [
       {

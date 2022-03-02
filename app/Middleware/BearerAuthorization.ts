@@ -39,7 +39,8 @@ export default class BearerAuthorization {
     }
 
     const isLogged = Boolean(user.is_logged);
-    if(isLogged != validatedToken.is_logged){
+    const isLoggedToken = Boolean(validatedToken);
+    if(isLogged !== isLoggedToken){
       response.status(StatusCode.UNAUTHORIZED).json({
         success: false, 
         token: null, 

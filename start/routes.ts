@@ -19,11 +19,46 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route';
+import User from 'App/Models/User';
+import WebSocket from 'App/Services/WebSocket';
+import SellerProfile from 'App/Models/SellerProfile';
+import Favorite from 'App/Models/Favorite';
+import Product from 'App/Models/Product';
+import Shelve from 'App/Models/Shelve';
+import Hash from '@ioc:Adonis/Core/Hash';
+
+Route.get('/', async () => {
+  const U = '9b10d8c5-2501-4af3-9658-640383baa925';
+  let z = await User.query().where('uuid', U)
+  .preload('clientProfile')
+  .preload('productsInCart')
+  .preload('productsInFavorites')
+  return z;
+  return {
+    user: await User.findBy('uuid', U),
+    cart: '' 
+  }
+  return await Hash.make('12345678');
+
+  const PRODUCT_ID = '39b06332-b6e5-4cb5-823a-38132ddd8af1';
+  const USER_ID = 'b9f54853-b538-47d4-8509-8684028315f2'
+
+  const userCart = await User.query()
+  .where('uuid', USER_ID).preload('shelf').first();
+  
+  const inShelf = await Shelve.query().where('user_uuid', USER_ID).preload('user');
+  
+  return { api: 'v1', user: userCart, inShelf };
+});
+//.middleware(['bearer_auth','role_client']);
 
 //user
 Route.post('/signup', 'UserController.store');
 Route.post('/signin', 'UserController.show');
-Route.delete('/signout', 'UserController.delete').middleware(['bearer_auth','role_client']);
+Route.delete('/signout', 'UserController.delete').middleware(['bearer_auth']);
+
+//user client context
+Route.get('/client', 'ClientController.index');
 
 //favorite
 Route.get('/client/favorite', 'FavoriteController.index').middleware(['bearer_auth','role_client']);

@@ -74,6 +74,7 @@ export default class UserService {
       });
     }
     const isValidPassword = await Hash.verify(userExists.password, body.password);
+    //return {isValidPassword, userPassword: userExists.password, body: body.password};
     if(!isValidPassword){
       return response.status(400).json({
         success: false, 
@@ -111,7 +112,7 @@ export default class UserService {
       success: true,
       token: null,
       message: 'logout is ok.',
-      data: user
+      data: null
     });
   }
 

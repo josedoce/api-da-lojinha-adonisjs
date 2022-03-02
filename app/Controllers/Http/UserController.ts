@@ -6,9 +6,6 @@ class UserController {
   constructor(){
     this.userService = new UserService();
   }
-  public async index(){
-    //alguma lista
-  }
 
   public async show(ctx:HttpContext){
     //validações aqui.
