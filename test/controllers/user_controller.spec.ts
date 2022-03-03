@@ -9,12 +9,6 @@ const VALID_CREDENTIALS = {
 };
 let TOKEN = '';
 
-// const makeLogout = async ()=> {
-//   const {body} = await supertest(BASE_URL).delete('/signout')
-//   .set({Authorization: `Bearer ${TOKEN}`});
-//   console.log(body);
-// }
-
 test.group('[UserController][][public]',(group)=>{
   group.after(async ()=>{
     console.log('banco de dados foi limpado apos os testes')
@@ -37,7 +31,7 @@ test.group('[UserController][][public]',(group)=>{
     TOKEN = body.token;
     
   });
-  
+
   test('[DELETE /signout] deslogar com sucesso.', async ()=>{
     
     await supertest(BASE_URL).delete('/signout')
@@ -49,7 +43,6 @@ test.group('[UserController][][public]',(group)=>{
     
     VALID_CREDENTIALS.email = 'umemaildetal@gmail.cm';
     const {body} = await supertest(BASE_URL).post('/signin').send(VALID_CREDENTIALS);
-    //console.log(body);
     assert.equal(body.message, "user don't exists");
 
   });
@@ -64,9 +57,9 @@ test.group('[UserController][][public]',(group)=>{
   });
 
   test('[POST /signin] entrar com email e senha certos.', async (assert)=>{
+    
     VALID_CREDENTIALS.password="umdoistresquatro"
     const {body} = await supertest(BASE_URL).post('/signin').send(VALID_CREDENTIALS);
-    //console.log(body);
     assert.notEqual(body.token, null);
 
   });

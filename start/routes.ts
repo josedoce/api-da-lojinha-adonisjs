@@ -58,7 +58,11 @@ Route.post('/signin', 'UserController.show');
 Route.delete('/signout', 'UserController.delete').middleware(['bearer_auth']);
 
 //user client context
-Route.get('/client', 'ClientController.index');
+Route.get('/clients', 'ClientController.index').middleware(['bearer_auth','role_admin']);
+Route.get('/client/:uuid', 'ClientController.show').middleware(['bearer_auth','role_client']);
+Route.post('/clients', 'ClientController.store').middleware(['bearer_auth','role_client']);
+Route.put('/clients/:uuid', 'ClientController.update').middleware(['bearer_auth','role_client']);
+Route.delete('/clients/:uuid', 'ClientController.delete').middleware(['bearer_auth','role_client']);
 
 //favorite
 Route.get('/client/favorite', 'FavoriteController.index').middleware(['bearer_auth','role_client']);

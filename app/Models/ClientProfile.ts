@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, beforeCreate, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, beforeCreate, belongsTo, BelongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import { v4 as uuid } from 'uuid';
+import User from './User';
 
 export default class ClientProfile extends BaseModel {
   @column({ isPrimary: true })
@@ -12,6 +13,8 @@ export default class ClientProfile extends BaseModel {
   @column()
   public cpf: string;
   
+  @belongsTo(()=> User, { foreignKey: 'user_uuid'})
+  public user: BelongsTo<typeof User>
   // @column()
   // public holder: string;
   

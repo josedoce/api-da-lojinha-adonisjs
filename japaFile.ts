@@ -6,9 +6,12 @@ import execa from 'execa';
 import sourceMapSupport from 'source-map-support'
 
 process.env.NODE_ENV = 'testing'
+process.env.ENABLE_LOGGER='false'
 process.env.MYSQL_DB_NAME='test-api-lojinha-adonis'
 process.env.ADONIS_ACE_CWD = join(__dirname)
 sourceMapSupport.install({ handleUncaughtExceptions: false })
+//limpa o console pra não ficar sujo 
+console.clear();
 
 //incluindo o banco de dados nos testes.
 async function runMigrations() {
