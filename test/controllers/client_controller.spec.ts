@@ -1,4 +1,3 @@
-import ClientProfile from 'App/Models/ClientProfile';
 import test from 'japa';
 import supertest from 'supertest';
 import { createClientProfile, createToken, deleteClientProfile, deleteToken, IClientProfile, IToken } from '../utils';
